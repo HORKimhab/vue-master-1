@@ -1,0 +1,55 @@
+{
+  // CSS Linting
+  "css.lint.unknownAtRules": "ignore",
+
+  // Editor Actions and Formatting
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Editor Display Settings
+  "editor.lineNumbers": "off",
+  "editor.glyphMargin": false,
+  "editor.folding": false,
+  "editor.minimap.enabled": false,
+  "editor.smoothScrolling": false,
+  "editor.cursorBlinking": "solid",
+  "editor.lightbulb.enabled": "off",
+  "editor.stickyScroll.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.indentation": false,
+  "editor.guides.highlightActiveIndentation": false,
+
+  // Editor Font and Text Settings
+  "editor.fontFamily": "'CaskaydiaMono Nerd Font Mono'",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "normal",
+  "editor.lineHeight": 2,
+
+  // Editor Scrolling Behavior
+  "editor.mouseWheelScrollSensitivity": 1,
+  "editor.fastScrollSensitivity": 1,
+  "editor.scrollbar.scrollByPage": true,
+
+  // Word Wrapping and Accessibility
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 50,
+  "editor.renderControlCharacters": false,
+  "editor.accessibilitySupport": "off",
+
+  // Workbench Settings
+  "workbench.activityBar.location": "hidden",
+  "workbench.hover.delay": 500,
+  "workbench.sash.hoverDelay": 500,
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.statusBar.visible": false,
+  "workbench.startupEditor": "none",
+  "workbench.layoutControl.enabled": false,
+
+  // Zen Mode Settings
+  "zenMode.showTabs": "single",
+  "zenMode.centerLayout": false,
+  "zenMode.fullScreen": true
+}
