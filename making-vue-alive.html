@@ -21,22 +21,29 @@
     <div>
       {{message}}
     </div>
+    <div>Can you drive: {{ canDrive}} </div>
   </div>
   <script>
-    const { createApp, ref } = Vue;
+    const { createApp, ref, computed } = Vue;
     const App = {
       setup() {
         // return {
         //   message: "Hello from Universe"
         // }
         let message = ref('Hello Vuejs')
+        let age = ref(null)
+        let canDrive = computed(() => {
+          console.log('Computed')
+
+          return age.value >= 18 ? 'Yeah' : 'No';
+        })
 
         setTimeout(() => {
           console.log('Changed');
           message.value = 'Learn Nuxt after vue'
         }, 5000)
 
-        return { message }
+        return { message, canDrive }
       },
     };
 
