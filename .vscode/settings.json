@@ -40,7 +40,6 @@
   "editor.accessibilitySupport": "off",
 
   // Workbench Settings
-  "workbench.activityBar.location": "hidden",
   "workbench.hover.delay": 500,
   "workbench.sash.hoverDelay": 500,
   "workbench.editor.empty.hint": "hidden",
