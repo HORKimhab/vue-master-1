@@ -26,9 +26,17 @@
     const { createApp, ref } = Vue;
     const App = {
       setup() {
-        return {
-          message: "Hello from Universe"
-        }
+        // return {
+        //   message: "Hello from Universe"
+        // }
+        let message = ref('Hello Vuejs')
+
+        setTimeout(() => {
+          console.log('Changed');
+          message.value = 'Learn Nuxt after vue'
+        }, 5000)
+
+        return { message }
       },
     };
 
