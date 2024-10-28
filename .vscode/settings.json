@@ -22,10 +22,10 @@
   "editor.guides.highlightActiveIndentation": false,
 
   // Editor Font and Text Settings
-  "editor.fontFamily": "'CaskaydiaMono Nerd Font Mono'",
-  "editor.fontLigatures": true,
-  "editor.fontWeight": "normal",
-  "editor.lineHeight": 2,
+  // "editor.fontFamily": "'CaskaydiaMono Nerd Font Mono'",
+  // "editor.fontLigatures": true,
+  // "editor.fontWeight": "normal",
+  // "editor.lineHeight": 2,
 
   // Editor Scrolling Behavior
   "editor.mouseWheelScrollSensitivity": 1,
