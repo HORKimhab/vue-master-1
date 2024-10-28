@@ -10,7 +10,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   // Editor Display Settings
-  "editor.lineNumbers": "off",
   "editor.glyphMargin": false,
   "editor.folding": false,
   "editor.minimap.enabled": false,
