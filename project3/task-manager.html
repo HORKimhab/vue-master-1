@@ -109,14 +109,8 @@
         const newTask = ref('')
         const newPriority = ref('')
 
-        onBeforeMount(() => {
-          console.log('On before mount')
-        });
-
         onMounted(() => {
           newTaskInput.value.focus()
-          console.log('On mounted')
-          console.log(' newTaskInput.valu', newTaskInput.value)
         });
 
         const addTask = () => {
