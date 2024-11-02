@@ -97,14 +97,9 @@
 
     const App = {
       setup() {
-        const tasks = ref([
-          {
-            id: 1,
-            description: "Read a book",
-            priority: "Low",
-            done: true
-          }
-        ])
+        const tasks = ref(
+          JSON.parse(sessionStorage.getItem('tasks') ?? '[]')
+        );
         const newTaskInput = ref(null)
         const newTask = ref('')
         const newPriority = ref('')
@@ -116,7 +111,7 @@
         const addTask = () => {
           if (newTask.value !== '' && newPriority.value !== '') {
             tasks.value.push({
-              id: tasks.value.lenght + 1,
+              id: tasks.value.length + 1,
               description: newTask.value,
               priority: newPriority.value,
               done: false
@@ -127,16 +122,18 @@
           }
         };
 
-        watch(newTask, (newValue, oldValue) => {
-          console.log(`New value is ${newValue}, old was ${oldValue}`);
-        }, { immediate: true });
+        // watch(newTask, (newValue, oldValue) => {
+        //   console.log(`New value is ${newValue}, old was ${oldValue}`);
+        // }, { immediate: true });
 
-        watchEffect(async () => {
-          console.log(`Newtask input value is ${newTask.value}`)
-        })
+        // watchEffect(async () => {
+        //   console.log(`Newtask input value is ${newTask.value}`)
+        // })
 
         watch(tasks, () => {
-          console.log('Tasks changed...')
+          // console.log('Tasks changed...')
+          sessionStorage.setItem('tasks', JSON.stringify(tasks.value))
+
         }, { deep: true });
 
 
