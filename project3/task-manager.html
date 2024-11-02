@@ -125,7 +125,16 @@
             newTask.value = '';
             newPriority.value = '';
           }
-        }
+        };
+
+        // watch(newTask, (newValue, oldValue) => {
+        //   console.log(`New value is ${newValue}, old was ${oldValue}`);
+        // });
+
+        watch(task, () => {
+          console.log('Tasks changed...')
+        }, { deep: true });
+
 
         return {
           newTaskInput,
