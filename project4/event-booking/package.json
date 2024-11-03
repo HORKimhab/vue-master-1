@@ -31,8 +31,8 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
-      "npm run lint",
-      "npm run format"
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
