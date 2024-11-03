@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-defineProps({
-  label: String
-})
+  defineProps({
+    label: String
+  })
 
-defineEmits(['click'])
+  defineEmits(['click'])
 </script>
