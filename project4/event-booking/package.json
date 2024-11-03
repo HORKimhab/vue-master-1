@@ -32,7 +32,7 @@
   "lint-staged": {
     "*.{js,vue}": [
       "eslint --fix",
-      "prettier --write src/"
+      "prettier --write ."
     ]
   }
 }
