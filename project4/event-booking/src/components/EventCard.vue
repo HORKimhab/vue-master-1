@@ -4,7 +4,7 @@
     <p class="p-4 border-b border-gray-200">{{ when }}</p>
     <p class="p-4">{{ descrition }}</p>
     <section class="flex justify-end p-4">
-      <RoundButton label="Register" @click="$emit('register')" />
+      <RoundButton @click="$emit('register')">Register</RoundButton>
     </section>
   </div>
 </template>
