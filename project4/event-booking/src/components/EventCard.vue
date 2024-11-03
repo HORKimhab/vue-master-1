@@ -10,13 +10,13 @@
 </template>
 
 <script setup>
-import RoundButton from './RoundButton.vue'
+  import RoundButton from './RoundButton.vue'
 
-defineProps({
-  title: String,
-  when: String,
-  descrition: String
-})
+  defineProps({
+    title: String,
+    when: String,
+    descrition: String
+  })
 
-defineEmits(['register'])
+  defineEmits(['register'])
 </script>
