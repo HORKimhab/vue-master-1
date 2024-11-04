@@ -1,9 +1,7 @@
 <template>
-  <RoundedCard>
-    <div class="p-4">Bookign to Vue Conference</div>
-  </RoundedCard>
+  <SectionCard> Bookign to Vue Conference </SectionCard>
 </template>
 
 <script setup>
-  import RoundedCard from './RoundedCard.vue'
+  import SectionCard from './SectionCard.vue'
 </script>
