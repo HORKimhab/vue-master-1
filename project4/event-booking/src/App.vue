@@ -4,11 +4,11 @@
     <h2 class="text-2xl font-medium">All Events</h2>
     <section class="grid grid-cols-2 gap-8">
       <EventCard
-        v-for="row in 8"
-        :key="row"
-        title="Vue Conference 2024"
-        when="2024-05-01"
-        descrition="Conference about Vue and JavaScript"
+        v-for="event in events"
+        :key="event.id"
+        :title="event.title"
+        :when="event.date"
+        :description="event.description"
         @register="console.log('It is registered in app.vue')"
       />
     </section>
@@ -20,6 +20,16 @@
 </template>
 
 <script setup>
+  import { onMounted, ref } from 'vue'
   import BookingItem from './components/BookingItem.vue'
   import EventCard from './components/EventCard.vue'
+
+  const events = ref([])
+
+  const fetchEvents = async () => {
+    const response = await fetch('http://localhost:8022/events')
+    events.value = await response.json()
+  }
+
+  onMounted(() => fetchEvents())
 </script>
