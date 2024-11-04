@@ -13,8 +13,8 @@
       />
     </section>
     <h2 class="text-2xl font-medium">Your Bookings</h2>
-    <section class="grid grid-cols gap-8">
-      <BookingItem v-for="row in 3" :key="row"/>
+    <section class="grid grid-cols gap-4">
+      <BookingItem v-for="row in 3" :key="row" />
     </section>
   </main>
 </template>

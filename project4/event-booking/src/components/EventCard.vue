@@ -1,17 +1,23 @@
 <template>
-  <RoundedCard>
-    <h3 class="p-4 font-medium text-xl border-b border-gray-200">{{ title }}</h3>
-    <p class="p-4 border-b border-gray-200">{{ when }}</p>
-    <p class="p-4">{{ descrition }}</p>
-    <section class="flex justify-end p-4">
-      <RoundButton @click="$emit('register')">Register</RoundButton>
-    </section>
-  </RoundedCard>
+  <SectionCard>
+    <template #header>
+      {{ title }}
+    </template>
+    {{ when }}
+    <template #footer>
+      <div class="space-y-4">
+        <p>{{ descrition }}</p>
+      </div>
+      <div class="flex justify-end">
+        <RoundButton @click="$emit('register')">Register</RoundButton>
+      </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup>
   import RoundButton from './RoundButton.vue'
-  import RoundedCard from './RoundedCard.vue'
+  import SectionCard from './SectionCard.vue'
 
   defineProps({
     title: String,
