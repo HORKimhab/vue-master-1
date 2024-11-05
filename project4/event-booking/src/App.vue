@@ -32,6 +32,8 @@
 
   const events = ref([])
   const eventsLoading = ref(false)
+  const bookings = ref([])
+  const bookingsLoading = ref(false)
 
   const fetchEvents = async () => {
     eventsLoading.value = true
@@ -41,6 +43,16 @@
       events.value = await response.json()
     } finally {
       eventsLoading.value = false
+    }
+  }
+
+  const fetchBookings = async () => {
+    bookingsLoading.value = true
+    try {
+      const response = await fetch('http://localhost:8022/bookings')
+      bookings.value = await response.json()
+    } finally {
+      bookingsLoading.value = false
     }
   }
 
@@ -62,5 +74,8 @@
     })
   }
 
-  onMounted(() => fetchEvents())
+  onMounted(() => {
+    fetchEvents()
+    fetchBookings()
+  })
 </script>
