@@ -10,7 +10,7 @@
           :title="event.title"
           :when="event.date"
           :description="event.description"
-          @register="console.log('It is registered in app.vue')"
+          @register="handleRegistration(event)"
         />
       </template>
       <template v-else>
@@ -42,6 +42,24 @@
     } finally {
       eventsLoading.value = false
     }
+  }
+
+  const handleRegistration = async event => {
+    const bookingPayload = {
+      id: Date.now().toString(),
+      userId: 1,
+      eventId: event.id,
+      eventTitle: event.title
+    }
+
+    await fetch('http://localhost:8022/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...bookingPayload,
+        status: 'confirmed'
+      })
+    })
   }
 
   onMounted(() => fetchEvents())
