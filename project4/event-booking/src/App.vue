@@ -19,7 +19,12 @@
     </section>
     <h2 class="text-2xl font-medium">Your Bookings</h2>
     <section class="grid grid-cols gap-4">
-      <BookingItem v-for="row in 3" :key="row" />
+      <template v-if="!bookingsLoading">
+        <BookingItem v-for="booking in bookings" :key="booking" :title="booking.eventTitle" />
+      </template>
+      <template v-else>
+        <LoadingBookingItem v-for="row in 4" :key="row" />
+      </template>
     </section>
   </main>
 </template>
@@ -29,6 +34,7 @@
   import BookingItem from './components/BookingItem.vue'
   import EventCard from './components/EventCard.vue'
   import LoadingEventCard from './components/LoadingEventCard.vue'
+  import LoadingBookingItem from './components/LoadingBookingItem.vue'
 
   const events = ref([])
   const eventsLoading = ref(false)
@@ -49,6 +55,7 @@
   const fetchBookings = async () => {
     bookingsLoading.value = true
     try {
+      await new Promise(resolve => setTimeout(resolve, 500))
       const response = await fetch('http://localhost:8022/bookings')
       bookings.value = await response.json()
     } finally {
