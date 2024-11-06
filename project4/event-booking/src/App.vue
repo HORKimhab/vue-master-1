@@ -20,7 +20,13 @@
     <h2 class="text-2xl font-medium">Your Bookings</h2>
     <section class="grid grid-cols gap-4">
       <template v-if="!bookingsLoading">
-        <BookingItem v-for="booking in bookings" :key="booking.id" :title="booking.eventTitle" :status="booking.status" />
+        <BookingItem
+          v-for="booking in bookings"
+          :key="booking.id"
+          :title="booking.eventTitle"
+          :status="booking.status"
+          @cancel="cancelBooking(booking.id)"
+        />
       </template>
       <template v-else>
         <LoadingBookingItem v-for="row in 4" :key="row" />
@@ -53,16 +59,18 @@
     }
   }
 
-  const fetchBookings = async () => {
-    bookingsLoading.value = true
+  const fetchBookings = async (isLoading = true) => {
+    bookingsLoading.value = isLoading ? isLoading : false
     try {
-      await new Promise(resolve => setTimeout(resolve, 500))
+      if (isLoading) await new Promise(resolve => setTimeout(resolve, 500))
       const response = await fetch('http://localhost:8022/bookings')
       bookings.value = await response.json()
     } finally {
       bookingsLoading.value = false
     }
   }
+
+  const findBookingById = id => bookings.value.findIndex(book => book.id === id)
 
   const handleRegistration = async event => {
     if (bookings.value.some(booking => booking.eventId === event.id && booking.userId === 1)) {
@@ -91,7 +99,7 @@
       })
 
       if (response.ok) {
-        const index = bookings.value.findIndex(book => book.id === bookingPayload.id)
+        const index = findBookingById(bookingPayload.id)
         bookings.value[index] = await response.json()
       } else {
         throw new Error('Failed to confirm booking')
@@ -99,6 +107,27 @@
     } catch (e) {
       console.error('Failed to register for event:', e)
       bookings.value = bookings.value.filter(book => book.id !== bookingPayload.id)
+    }
+  }
+
+  const cancelBooking = async bookingId => {
+    const index = findBookingById(bookingId)
+    const originalBooking = bookings.value[index]
+    bookings.value.slice(index, 1)
+
+    try {
+      const response = await fetch(`http://localhost:8022/bookings/${bookingId}`, {
+        method: 'DELETE'
+      })
+
+      await fetchBookings(false)
+
+      if (!response.ok) {
+        throw new Error('Booking could not be cancelled')
+      }
+    } catch (e) {
+      console.error('Failed to cancel booking', e)
+      bookings.value.splice(index, 0, originalBooking)
     }
   }
 
