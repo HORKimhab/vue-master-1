@@ -36,6 +36,13 @@
       "eventId": "3",
       "eventTitle": "PHP Conference 2022",
       "status": "pending"
+    },
+    {
+      "id": "1731048398478",
+      "userId": 1,
+      "eventId": "1",
+      "eventTitle": "Rails Conference 2024",
+      "status": "pending"
     }
   ]
 }

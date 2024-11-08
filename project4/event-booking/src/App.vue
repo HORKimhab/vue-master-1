@@ -37,17 +37,18 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue'
+  import { onMounted } from 'vue'
   import BookingItem from './components/BookingItem.vue'
 
   import LoadingBookingItem from './components/LoadingBookingItem.vue'
   import { Status } from './components/Booking/booking.constant'
   import EventList from './components/EventList.vue'
+  import useBookings from './composables/useBookings'
 
   // const events = ref([])
   // const eventsLoading = ref(false)
-  const bookings = ref([])
-  const bookingsLoading = ref(false)
+  // const bookings = ref([])
+  // const bookingsLoading = ref(false)
 
   // const fetchEvents = async () => {
   //   eventsLoading.value = true
@@ -60,16 +61,18 @@
   //   }
   // }
 
-  const fetchBookings = async (isLoading = true) => {
-    bookingsLoading.value = isLoading ? isLoading : false
-    try {
-      if (isLoading) await new Promise(resolve => setTimeout(resolve, 500))
-      const response = await fetch('http://localhost:8022/bookings')
-      bookings.value = await response.json()
-    } finally {
-      bookingsLoading.value = false
-    }
-  }
+  // const fetchBookings = async (isLoading = true) => {
+  //   bookingsLoading.value = isLoading ? isLoading : false
+  //   try {
+  //     if (isLoading) await new Promise(resolve => setTimeout(resolve, 500))
+  //     const response = await fetch('http://localhost:8022/bookings')
+  //     bookings.value = await response.json()
+  //   } finally {
+  //     bookingsLoading.value = false
+  //   }
+  // }
+
+  const { bookings, bookingsLoading, fetchBookings } = useBookings()
 
   const findBookingById = id => bookings.value.findIndex(book => book.id === id)
 
