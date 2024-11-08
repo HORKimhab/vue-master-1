@@ -31,10 +31,10 @@
   ],
   "bookings": [
     {
-      "id": "1731048398478",
+      "id": "1731050879927",
       "userId": 1,
-      "eventId": "1",
-      "eventTitle": "Rails Conference 2024",
+      "eventId": "4",
+      "eventTitle": "Rust Conference 2021",
       "status": "pending"
     }
   ]
