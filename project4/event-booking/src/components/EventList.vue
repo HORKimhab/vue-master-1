@@ -19,7 +19,7 @@
             :title="event.title"
             :when="event.date"
             :description="event.description"
-            @register="$emit('register', event)"
+            @register="handleRegistration(event)"
         /></template>
         <template v-else>
           <div class="col-span-2 text-center">No events yet...</div>
@@ -38,6 +38,7 @@
   import LoadingEventCard from './LoadingEventCard.vue'
   import SectionCard from './SectionCard.vue'
   import RoundButton from './RoundButton.vue'
+  import useBookings from '@/composables/useBookings'
 
   const events = ref([])
   const eventsLoading = ref(false)
@@ -57,7 +58,7 @@
     }
   }
 
-  defineEmits(['register'])
+  const { handleRegistration } = useBookings()
 
   onMounted(() => {
     fetchEvents()
